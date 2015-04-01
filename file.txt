@@ -1,0 +1,55 @@
+Start to code below program now :
+
+1) http://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/
+
+2) http://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/
+
+3) http://www.geeksforgeeks.org/minimum-length-unsorted-subarray-sorting-which-makes-the-complete-array-sorted/
+
+4) http://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/
+
+5) http://www.geeksforgeeks.org/reverse-a-list-in-groups-of-given-size/
+
+6) http://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/
+
+7) http://www.geeksforgeeks.org/merge-two-sorted-linked-lists/
+
+Unable to cod :
+
+
+
+
+
+
+CHMOD : 
+
+public group fileOwner.
+rwe	rwe	rwe
+
+
+-------------------
+&
+
+fg jobid : 
+
+jobs : for getting the jobid(PID)
+
+kill that process : kill -9 PID
+
+--------------------------
+
+4. What is Zombie process in UNIX? How do you find Zombie process in UNIX?
+When a program forks and the child finishes before the parent, the kernel still keeps some of its information about the child in case the parent might need it - for example, the parent may need to check the child's exit status. To be able to get this information, the parent calls 'wait()'; In the interval between the child terminating and the parent calling 'wait()', the child is said to be a 'zombie' (If you do 'ps', the child will have a 'Z' in its status field to indicate this.) 
+Zombie : The process is dead but have not been removed from the process table.
+
+remember Zombie --> half dead half alive.
+
+------------------------------------------
+
+process can terminated by exit or _exit funstions. termination status is passed as an argument to these functions.In case of abnormal termination. the kernel(not the process) generates the termination status , to indicate the reason for the abnormal termination. In any case (either normal or abnormal termination) , the parent process will get the termination status from it's child.
+
+Now , parent has to call wait or waitpid functions to get the termination status from its child.
+
+----------------------------------------------
+
+
