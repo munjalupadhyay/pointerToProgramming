@@ -1,3 +1,8 @@
+// Nice instructions given at : 
+// http://codereview.stackexchange.com/questions/82698/singly-linked-list-in-java
+//http://codereview.stackexchange.com/questions/7107/singly-linked-list-java-implementation
+//http://codereview.stackexchange.com/questions/31868/linked-list-in-java-garbage-collection
+
 class Node{
 
 	private Object data;
@@ -120,20 +125,39 @@ class LinkedList{
 
 	}
 
+/*
+	// @Overriding toString Method of Object class 
 
 	public String toString() {
 		String list = "";
-		list += "[" + this.start.getData() + "]";
+		list += "[" + start.getData() + "]";
 
 		Node curr = start.getLink();
 		while (curr != null){
 			list += "[" + curr.getData() + "]";
-		curr = curr.getLink();
-	}
+			curr = curr.getLink();
+		}
 
-    return list;
+    		return list;
 
-}
+		}  */
+
+
+	/* Rather than a String, consider using a StringBuilder instead.  StringBuilder is designed for appending. Regular String values are not. Using += on a String implicitly creates a new String every time. */
+
+	public String toString() {
+    		StringBuilder builder = new StringBuilder();
+
+		Node current = start;
+		while ( current != null ) {
+			builder.append("[" + current.getData() + "]");
+			current = current.getLink();
+    		}
+
+		return builder.toString();
+		
+		}
+		
 	
 }
 
@@ -143,6 +167,7 @@ class Sll{
 public static void main(String args[]){
 
 	LinkedList sl=new LinkedList();
+	System.out.println(sl);
 	sl.insertAtEnd(1);
 	sl.insertAtEnd(2);
 	sl.insertAtEnd(3);
