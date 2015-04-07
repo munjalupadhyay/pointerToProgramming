@@ -1,7 +1,17 @@
+// Java ArrayList class uses a dynamic array for storing the elements.It extends AbstractList class and implements List interface.
+// Java ArrayList class can contain duplicate elements.
+// Java ArrayList class maintains insertion order.
+// Java ArrayList class is non synchronized.
+// Java ArrayList allows random access because array works at the index basis.
+// In Java ArrayList class, manipulation is slow because a lot of shifting needs to be occurred if any element is removed from the array list.
+
+
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Collections;
 
-class spoj{
+class ArrayListEx{
 public static void main(String args[]){
 
 	ArrayList<String> al=new ArrayList<String>();
@@ -56,7 +66,7 @@ public static void main(String args[]){
 
 	//  traverse all the element using iterator.
 
-	Iterator<String> it=al.iterator();
+	Iterator<String> it=al.iterator();	
 	while(it.hasNext()){
 		System.out.println(it.next());
 	}
@@ -64,9 +74,24 @@ public static void main(String args[]){
 	// Converting ArrayList to Array
 	String strArray[]=al.toArray(new String[al.size()]);
 
-	
-	
+	// add all the eleemnt of List to ArrayList
 
-	
+	List<String> l=new ArrayList<String>();
+	l.add("lela");
+	l.add("majanu");
+	al.addAll(l);
+	System.out.println(al);
+
+	// Get sub List from ArrayList.
+
+	List<String> subL=al.subList(2,4);
+	System.out.println(subL);
+
+	// How to sort ArrayList using Comparator? : another class is proviede to explain it.
+
+	// How to reverse ArrayList content? 
+	Collections.reverse(al);
+	System.out.println(al);	
+
 }
 }
