@@ -104,6 +104,23 @@ peekLast(): Retrieves, but does not remove, the last element of this list, or re
 
 System.out.println(ll.getLast());
 
+//remove element from linked list.
+
+/*
+remove(): Removes and returns the head (first element) of this list.
+remove(index): Removes and returns the element at the specified position in this list.
+remove(object): Removes the first occurrence of the specified element from this list, if it is present. returns true or false.
+removeFirst(): Removes and returns the first element from this list.
+removeFirstOccurrence(object): Removes the first occurrence of the specified element in this list (when traversing the list from head to tail). It 					returns true or false.
+removeLast(): Removes and returns the last element from this list.
+removeLastOccurrence(object): Removes the last occurrence of the specified element in this list (when traversing the list from head to tail).It 				returns true or false.
+*/
+
+System.out.println(ll.remove("menbrain"));
+//System.out.println(ll.removeFirstOccurrence("thore"));
+System.out.println(ll);
+
+
 
 
 }

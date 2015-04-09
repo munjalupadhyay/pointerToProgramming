@@ -28,22 +28,22 @@ Target : complete Collection
 
 MOtivation :  Collection is so easy , just read all the methods , and how to use them , practice methods as much as you can.
 
---> use this site for base : http://www.javatpoint.com/collections-in-java  and  http://www.java2novice.com/java-collections-and-util/
+--> use this site for base site and cover up alll the examples fromm them : http://www.javatpoint.com/collections-in-java  and  http://	
+www.java2novice.com/java-collections-and-util/ and http://beginnersbook.com/2013/12/difference-between-arraylist-and-vector-in-java/
 
+
+ 		
 Complete List first then Queue then Set.
 
 I Started from List : 
 
-AttayList completed ,
+AttayList LinkedList and Vector completed ,
 
-Now time for LinkedList.
+maintain the learning order given at : http://www.java2novice.com/java-collections-and-util/
 
+Now time for HashTable.
 
-
-
-
-
-
+go and perform all the operation on LinkedList : http://www.java2novice.com/java-collections-and-util/hashtable/
 
 
 
