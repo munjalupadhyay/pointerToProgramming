@@ -37,19 +37,28 @@ Complete List first then Queue then Set.
 
 I Started from List : 
 
-AttayList LinkedList and Vector completed ,
+AttayList LinkedList , Vector , HashSet , LinkedHashSet completed ,
 
 maintain the learning order given at : http://www.java2novice.com/java-collections-and-util/
 
-Now time for HashTable.
+Now time for TreeSet.
 
-go and perform all the operation on LinkedList : http://www.java2novice.com/java-collections-and-util/hashtable/
+I started TreeSet , and I am at
+http://www.java2novice.com/java-collections-and-util/treeset/comparator-object/
+http://www.java2novice.com/java-collections-and-util/treeset/duplicate-objects/
+search "compare method in comparator java"
+search "compare and equals in collections"
 
+
+
+read article "http://en.wikipedia.org/wiki/Hash_table"
+
+read Red-Black tree from Algorithm book.
 
 
 search for "java collection interview questions".
 
-
+search for "Difference between HashMap and Hashtable".
 
 Topics in java :
 read method overriding , operator overloading , operator overiding.
