@@ -28,7 +28,7 @@ Target : complete Collection
 
 MOtivation :  Collection is so easy , just read all the methods , and how to use them , practice methods as much as you can.
 
---> use this site for base site and cover up alll the examples fromm them : http://www.javatpoint.com/collections-in-java  and  http://	
+--> use this site for base site and cover up alll the examples from them : http://www.javatpoint.com/collections-in-java  and  http://	
 www.java2novice.com/java-collections-and-util/ and http://beginnersbook.com/2013/12/difference-between-arraylist-and-vector-in-java/
 
 
@@ -37,17 +37,13 @@ Complete List first then Queue then Set.
 
 I Started from List : 
 
-AttayList LinkedList , Vector , HashSet , LinkedHashSet completed ,
+AttayList LinkedList , Vector , HashSet , LinkedHashSet , TreeSet completed ,
 
 maintain the learning order given at : http://www.java2novice.com/java-collections-and-util/
 
-Now time for TreeSet.
+Now time for HashSet.
 
-I started TreeSet , and I am at
-http://www.java2novice.com/java-collections-and-util/treeset/comparator-object/
-http://www.java2novice.com/java-collections-and-util/treeset/duplicate-objects/
-search "compare method in comparator java"
-search "compare and equals in collections"
+
 
 
 

@@ -1,3 +1,6 @@
+// TreeSet uses comparator while adding elements for sorting and uniquness check.
+// see the notes.
+
 import java.util.*;
 
 class TreeSetEx

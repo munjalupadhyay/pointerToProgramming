@@ -1,3 +1,5 @@
+// TreeSet uses comparator while adding elements for sorting and uniquness check.
+
 import java.util.*;
 
 class TreeSetEx
@@ -50,6 +52,8 @@ public static void main(String args[])
 	// How to get highest value element from a set?
 	System.out.println(ts.last());	
 	
+
+
 
 }
 }
