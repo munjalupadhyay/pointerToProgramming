@@ -1,0 +1,213 @@
+// following is the implementation of geeksforgeeks question (Find the largest BST subtree in a given Binary Tree)
+// link : http://www.geeksforgeeks.org/find-the-largest-subtree-in-a-tree-that-is-also-a-bst/
+
+import java.util.*;
+import java.lang.*;
+
+class Node{
+int data;
+Node left;
+Node right;
+Node(int data,Node left,Node right){
+	this.data=data;
+	this.left=left;
+	this.right=right;
+}
+}
+
+class Value{
+	int min;
+	int max;
+	int count;
+	Value(){
+		this.min=0;
+		this.max=0;
+		this.count=0;
+	}
+}
+
+
+
+class Temp {
+Node bstNode;
+int count=1;
+
+int MAX(int a , int b){
+ if(a>b)
+	return a;
+
+	return b;
+}
+
+boolean fun(Node t,Value v){
+	boolean lResult=false,rResult=false;
+	Value vLeft=new Value();
+	Value vRight=new Value();
+
+	if(t.left == null && t.right == null){  // node is leaf node
+		v.min=t.data;
+		v.max=t.data;
+		v.count=1;
+		return true;
+	}
+	if(t.left == null){  // current node do not have left child
+		rResult=fun(t.right,vRight);
+		if(rResult == true){
+			if(vRight.min <= vRight.max && t.data < vRight.min ){
+				v.min=t.data;
+				v.max=vRight.max;
+				v.count= vRight.count + 1;
+				if(v.count>this.count){
+					bstNode=t;
+					this.count=v.count;
+					System.out.println("setting root as "+t.data);	
+				}
+						
+				return true;
+			}
+			else{
+				//bstNode=t.right;
+				//System.out.println("setting root as "+t.right.data);
+				return false;
+			}
+		}
+		else{
+
+			return false;
+		}
+
+	}
+	if(t.right == null){  // current node do not have right child
+		lResult=fun(t.left,vLeft);
+		if(lResult == true){
+			if(vLeft.min <= vLeft.max &&  vLeft.max<t.data ){
+				v.min=vLeft.min;
+				v.max=t.data;
+				v.count= vLeft.count + 1;
+				if(v.count>this.count){
+					bstNode=t;
+					this.count=v.count;
+					System.out.println("setting root as "+t.data);
+				}
+				
+				return true;
+			}
+			else{
+				//bstNode=t.left;
+				//System.out.println("setting root as "+t.left.data);
+				return false;
+			}
+		}
+		else{
+
+			return false;
+		}
+
+
+
+	}
+
+	// current node having both left and right child
+	
+	lResult=fun(t.left,vLeft);
+	rResult=fun(t.right,vRight);
+
+	if(lResult == true && rResult == true){
+		if(vLeft.min <= vLeft.max && vRight.min <= vRight.max && vLeft.max < vRight.min
+			&& vLeft.max < t.data && t.data < vRight.min){		// current node is part of BST
+
+			v.min=vLeft.min;
+			v.max=vRight.max;
+			v.count=vLeft.count + vRight.count + 1;
+			if(v.count>this.count){
+				bstNode=t;
+				this.count=v.count;
+				System.out.println("setting root as "+t.data);
+			}
+			return true;
+		}
+		else{		// current is not going to be part of BST
+			
+			v.min=vLeft.min;
+			v.max=vRight.max;
+			v.count=MAX(vLeft.count,vRight.count);
+			if(vLeft.count <= vRight.count  ){  // as we are interested in bigger BST
+				if(v.count>this.count){
+					bstNode=t.left;
+					this.count=v.count;
+					System.out.println("setting root as "+t.left.data);
+				}
+			}
+			else{
+				if(v.count>this.count){
+					bstNode=t.right;
+					this.count=v.count;
+					System.out.println("setting root as "+t.right.data);
+				}
+			}
+
+			return false;
+		}
+	}
+	else{
+		return false;
+	}
+
+}
+
+Node createBT(){
+	Node root=new Node(50,null,null);
+	Node left1=new Node(30,null,null);
+	Node right1=new Node(60,null,null);
+		
+	root.left=left1;
+	root.right=right1;	
+	
+	Node left2=new Node(5,null,null);
+	Node right2=new Node(20,null,null);
+	left1.left=left2;
+	left1.right=right2;
+
+	left2=new Node(45,null,null);
+	right2=new Node(70,null,null);
+	right1.left=left2;
+	right1.right=right2;
+
+	right2.left=new Node(65,null,null);
+	right2.right=new Node(80,null,null);
+	
+	/*
+	Node root=new Node(5,null,null);
+	Node left1=new Node(2,null,null);
+	Node right1=new Node(4,null,null);
+		
+	root.left=left1;
+	root.right=right1;	
+	
+	Node left2=new Node(1,null,null);
+	Node right2=new Node(3,null,null);
+	left1.left=left2;
+	left1.right=right2;
+	*/
+	return root;
+
+}
+
+
+
+public static void main(String args[]){
+
+Temp temp = new Temp();
+Node t=temp.createBT();
+Value v = new Value();
+temp.fun(t,v);
+if(temp.bstNode != null){
+System.out.println(temp.bstNode.data);
+System.out.println("NC= "+temp.count);
+}
+else{
+	System.out.println("Tree not found");
+}
+
+}
+}
