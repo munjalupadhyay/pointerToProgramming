@@ -1,0 +1,9 @@
+class Node{
+	int words;
+	int prefixes;
+	Node link[26];
+}
+
+class Trie{
+
+}

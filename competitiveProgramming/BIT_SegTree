@@ -1,0 +1,30 @@
+/* monday : 
+
+https://kartikkukreja.wordpress.com/2013/12/02/range-updates-with-bit-fenwick-tree/#more-420
+https://github.com/kartikkukreja/blog-codes/blob/master/src/Range%20Updates%20%26%20Range%20Queries%20with%20BIT.cpp
+http://www.spoj.com/problems/UPDATEIT/
+https://apps.topcoder.com/forums/?module=Thread&threadID=715842&start=0&mc=8
+http://codewarriers.blogspot.in/
+http://cs.stackexchange.com/questions/33014/range-update-range-query-with-binary-indexed-trees
+
+*/
+
+
+/// TODO : sqrt decomposition (reading)
+
+// TODO : topcoder article on BIT, beta agar ye nahi hua to BIT nahi sekhe abb taq. https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/
+
+
+// BIT TODO : http://www.spoj.com/problems/UPDATEIT/ : see here in tree[i] store the value at arr[i]. So what is the meaning of tree[] then. the meaning is : you update  time is O(lgN) rather than O(N). tree[i] do not store cumulative frequency from arr[0] to arr[i].
+// So if you do query(l,r)=query(r)-query(l-1); will not workout. 
+
+
+// https://kartikkukreja.wordpress.com/page/6/
+
+// https://kartikkukreja.wordpress.com/tag/kgss-spoj/
+
+// https://github.com/cacophonix/SPOJ/blob/master/GSS1.cpp
+
+// http://codewarriers.blogspot.in/
+
+// fast io : https://discuss.codechef.com/questions/7394/help-on-fast-inputoutput

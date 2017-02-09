@@ -1,72 +1,83 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 class spoj{
+
+void mergeSort(int arr[]){
+	int length=arr.length;
+	if(length<2){
+		return;
+	}
+	
+	int mid=length/2;
+	int first[]=new int[mid];
+	int second[]=new int[length-mid];	
+	
+	for(int i=0;i<first.length;i++){
+		first[i]=arr[i];
+	}
+	for(int i=0;i<second.length;i++){
+		second[i]=arr[mid+i];
+	}	
+/*
+	for(int i=0;i<first.length;i++){
+//		System.out.println(first[i]);
+	}
+	
+	System.out.println();
+	System.out.println();
+
+	for(int i=0;i<second.length;i++){
+		System.out.println(second[i]);
+	}
+*/
+	mergeSort(first);
+	mergeSort(second);
+	merge(first,second,arr);
+
+	
+	
+
+}
+
+
+void merge(int first[],int second[],int result[]){
+	int i=0,j=0,k=0;
+	while(i<first.length && j<second.length){
+		if(first[i]>second[j]){
+			result[k]=second[j];
+			k++;
+			j++;
+		}
+		else{
+			result[k]=first[i];
+			i++;
+			k++;
+		}
+	}
+
+	while(i<first.length){
+		result[k]=first[i];
+		i++;
+		k++;
+	}
+	while(j<second.length){
+		result[k]=second[j];
+		j++;
+		k++;
+	}
+}
+
+
 public static void main(String args[]){
 
-	ArrayList<String> al=new ArrayList<String>();
-
-	// add the element.
-	al.add("munjal");		
-	al.add("kunjal");
-	al.add("gunjal");
-	al.add(2,"ganesha");
-	al.add(1,"shiva");
-	
-	System.out.println(al);
-
-	// Edit the element
-	al.set(2,"at"); 
-	
-	System.out.println(al);
-
-	// remove all elements.
-	//al.clear();
-
-	// Removing elements
-        // removing the element in index 0
-
-	al.remove("enjoying"); 
-	System.out.println(al);
-	al.remove(2);
-	System.out.println(al);	
+	spoj sp=new spoj();
+	int arr[]=new int[]{1,3,20,5,9,6,4,7};
+	sp.mergeSort(arr);
 
 	
-	// Checking if array list is empty
-        boolean check = al.isEmpty();
-
-	// retriving an element 
-	String str=al.get(0);
-	System.out.println(str);
-
-
-	// traverse all the elements using for loop
-	for(int i=0;i<al.size();i++){
-		System.out.println(al.get(i));
+	for(int i=0;i<arr.length;i++){
+		System.out.println(arr[i]);
 	}
 
-	System.out.println();
-
-	// traverse all the element using foreach loop 
-	for(String st : al){
-		System.out.println(st);
-	}	
-
-	System.out.println();
-
-	//  traverse all the element using iterator.
-
-	Iterator<String> it=al.iterator();
-	while(it.hasNext()){
-		System.out.println(it.next());
-	}
-	
-	// Converting ArrayList to Array
-	String strArray[]=al.toArray(new String[al.size()]);
-
-	
-	
-
-	
 }
 }

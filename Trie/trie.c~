@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+int words;
+int prefixes;
+struct Node* arr[26];
+};
+
+
+void addWord(struct Node*,char []); // add a single word to the dictionary.
+int countPrefixes(char []); // this function counts the number of words that have a String "prefix" as a prefix.
+void initialize(struct Node*);  // initialize a node.
+
+
+
+void initialize
+(struct Node *p)
+{	
+	int i=0;
+	p->words==0;
+	p->prefixes=0;
+	for(i=0;i<26;i++)
+	{
+		p->arr[i]=0;	
+	}
+}
+
+struct Node * createNode
+()
+{
+	struct Node *p=0;
+	p=(struct Node*)malloc(sizeof(struct Node));
+	return p;
+}
+
+void addWord
+(struct Node *p,char arr[])
+{
+	printf("computing for %s \n",arr);
+	int charVal=0;
+	if(arr[0]=='\0')
+	{
+		printf("exitting at if at head \n");
+		p->words+=1;	
+	}
+	else
+	{
+		p->prefixes+=1;
+		if((int)arr[0]>96){
+			charVal=((int)arr[0]-32);
+		}
+
+		charVal-=65;
+		if(charVal>25 || charVal<0) // to make the program protected from adding bad inputs
+		{
+			return;
+		}
+		if(p->arr[charVal]==0)	//
+		{	
+			printf("inside\n");
+			struct Node *temp=createNode();
+			initialize(temp);
+			printf("about to exit\n");
+			p->arr[charVal]=temp;
+			printf("exitting..\n");
+		}
+	
+		printf("added charcter %c",arr[0]);		
+
+		if(arr[1]!='\0')
+		{
+			addWord(p->arr[charVal],&arr[1]);
+		}
+		else
+		{
+			return;
+		}
+		
+	}
+}
+
+int main(void){
+	struct Node *root=0;
+
+	int i=0;
+	printf("%d",(int)'a');
+	char str[6]={'m','u','n','j','a','l'};	
+
+	addWord(root,"tree");
+	
+	return 0;
+}

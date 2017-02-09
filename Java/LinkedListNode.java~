@@ -1,0 +1,70 @@
+class Node{
+private Object data;
+private Node link;
+
+
+Node(){
+	this.data=0;
+	this.link=null;		
+}
+
+Node(Object data){
+	this.data=data;
+	this.link=null;
+}
+
+Node(Object data,Node link){
+	this.data=data;
+	this.link=link;
+}
+
+void setData(Object data){
+	this.data=data;
+}
+void setLink(Node link){
+	this.link=link;
+}
+
+Object getData(){
+	return data;
+}
+Node getLink(){
+	return link;
+}
+
+
+}
+
+class MyLinkedList{
+
+private Node head;
+
+
+MyLinkedList(){
+	head=null;
+}
+
+void add(Object data){
+	Node p=new Node(data,null);
+	(linkToLastNode()).setLink(p);	
+
+}
+
+private Node linkToLastNode(){
+	if(head==null){
+		return null;
+	}
+	else{
+		Node temp=head;
+		while((temp.getLink())!=null){
+			temp=temp.getLink();
+		}
+		return temp;
+	}
+}
+
+
+
+
+}
+

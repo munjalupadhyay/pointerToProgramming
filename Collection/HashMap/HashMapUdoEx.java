@@ -1,0 +1,84 @@
+import java.util.*;
+
+class HashMapUdoEx{
+public static void main(String args[]){
+
+	HashMap<FruitName,FruitPrice> hm=new HashMap<FruitName,FruitPrice>();
+	
+	FruitName f1=new FruitName("Orange");
+	FruitName f2=new FruitName("banana");
+	FruitName f3=new FruitName("mango");	
+
+	hm.put(f1,new FruitPrice(10));
+	hm.put(f2,new FruitPrice(20));
+	hm.put(f3,new FruitPrice(40));
+
+	System.out.println(hm);	
+
+	hm.put(new FruitName("mango"),new FruitPrice(50));		// adding the eleemnts with duplicate keys , so the new value will override the old value.
+
+	System.out.println(hm);	
+
+	// removing the user defined objects from HashMap. 
+	hm.remove(f1);
+	
+	System.out.println(hm);	
+
+}
+}
+
+
+class FruitName{
+
+String name =null;
+
+FruitName(String s){
+	name=s;
+}
+
+public boolean equals(Object p){
+	if(p instanceof FruitName){
+		FruitName o=(FruitName)p;
+		return (this.name.equals(o.name));
+	}
+	else{
+		return false;
+	}
+}
+
+public int hashCode(){
+
+	int i=10;
+	return (i+this.name.hashCode());
+}
+
+public String toString(){
+	return " key :"+this.name;
+}
+
+public String getName(){
+	return ""+this.name;
+}
+
+
+}
+
+
+class FruitPrice{
+
+int price =0;
+
+FruitPrice(int s){
+	price=s;
+}
+
+
+public String toString(){		// remove this method and see the output.
+	return "value :"+this.price;
+}
+
+public String getPrice(){
+	return ""+this.price;
+}
+
+}

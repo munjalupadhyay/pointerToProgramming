@@ -1,0 +1,152 @@
+// taking egges properly , but not printing properly
+
+import java.util.*;
+
+
+class Vertex{
+	String name;
+	int height;
+	Vertex parent;
+	Vertex(String name,int height,Vertex parent){
+		this.name=name;
+		this.height=height;
+		this.parent=parent;
+	}
+
+	public boolean equals(Vertex v){
+		return this.name.equals(v.name);
+	}
+}
+
+class Edge implements Comparable<Edge>{
+	int source;
+	int dest;
+	int weight;
+	Edge(int source,int dest,int weight){
+		this.source=source;
+		this.dest=dest;
+		this.weight=weight;
+	}
+
+	public int compareTo(Edge o) {
+    		if(this.weight>o.weight){
+			return 1;
+		}
+		else if(this.weight<o.weight){
+			return -1;
+		}
+		else{
+			return 0;
+		}
+	}
+
+	
+}
+
+class Graph{
+
+Vertex verList[];
+Edge edgeList[];
+int verCount;
+int edgeCount;
+Scanner sc=new Scanner(System.in);
+
+
+void createGraph(){
+	verCount=sc.nextInt();
+	verList=new Vertex[verCount];
+	for(int i=0;i<verCount;i++){
+		verList[i]=new Vertex(sc.next(),0,null);
+	}
+	edgeCount=sc.nextInt();
+	edgeList=new Edge[edgeCount];
+	for(int i=0;i<edgeCount;i++){
+		edgeList[i]=new Edge( this.indexOf(sc.next()), 
+					this.indexOf(sc.next()) ,
+					sc.nextInt() );
+	}
+}
+
+int indexOf(String s){
+	for(int i=0;i<verCount;i++){
+		if( (verList[i].name).equals(s) ){
+			return i;
+		}
+	}
+	return -1;
+}
+
+Vertex find(Vertex ver){
+	Vertex temp=ver;
+	while(temp.parent != null){
+		temp=temp.parent;
+	}
+	return temp;
+}
+
+int max(int x,int y){
+	if(x>y){
+		return x;
+	}
+	else{
+		return y;
+	}
+}
+
+Vertex union(Vertex x,Vertex y){
+	if(x.height>y.height){
+		y.parent=x;
+		x.height=max(x.height,y.height+1);
+		return x;
+	}
+	else if(y.height>x.height){
+		x.parent=y;
+		y.height=max(x.height+1,y.height);
+		return y;
+	}
+	else{
+		y.parent=x;
+		x.height=y.height+1;
+		return x;
+	}
+}
+
+void krushkal(){
+	// sort edges by their weights
+	Arrays.sort(edgeList);
+	/* print arrray	
+	for(int i=0;i<edgeCount;i++){
+		System.out.println(" "+verList[edgeList[i].source].name+" "+verList[edgeList[i].dest].name+" "+edgeList[i].weight);
+	}
+	*/
+
+	// for each edge in graph
+	for(int i=0;i<edgeCount;i++){
+		int source=edgeList[i].source;
+		int dest=edgeList[i].dest;
+		Vertex findSource=find(verList[source]);
+		Vertex findDest=find(verList[dest]);
+		if( ! (findSource.equals(findDest) ) ){
+			union(findSource,findDest);
+			System.out.println("picking "+verList[source].name+"-->"+verList[dest].name);
+			//printKrushkal();
+		}
+
+	}
+	
+
+}// end krushkal
+
+
+}
+
+class MST{
+public static void main(String args[]){
+		
+	Graph g=new Graph();
+	g.createGraph();
+	g.krushkal();
+	g.printKrushkal();
+
+}
+}

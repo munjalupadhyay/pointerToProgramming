@@ -120,7 +120,7 @@ System.out.println(ll.remove("menbrain"));
 //System.out.println(ll.removeFirstOccurrence("thore"));
 System.out.println(ll);
 
-
+// get rid of Comparators , it is KILLING me.
 
 
 }
