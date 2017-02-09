@@ -1,1 +1,0 @@
-gcc test.c -std=c99 `sdl-config --cflags` `sdl-config --libs` -o test
