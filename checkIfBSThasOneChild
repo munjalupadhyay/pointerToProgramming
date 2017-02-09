@@ -1,0 +1,67 @@
+// the question is given at : http://www.geeksforgeeks.org/check-if-each-internal-node-of-a-bst-has-exactly-one-child/
+// all the three approaches are really very cool.
+// I have implemented something similar to the third approach.
+
+
+import java.util.*;
+import java.lang.*;
+class Temp {
+
+int MAX(int a , int b){
+ if(a>b)
+	return a;
+
+	return b;
+}
+
+boolean fun(int arr[]){
+	int MIN=-2147483648; // really very small value
+	int MAX=2147483647; // really very big value
+	int i=0;
+	
+	for(i=0;i<arr.length-1;i++){
+		// check is made for current i value, Is current value is within the range of MIN and MAX. if not return false
+		if(arr[i]<=MAX && arr[i]>=MIN){
+
+			// if arr[i] is greter that arr[i+1], means next node in preorder traversal is lesser than current node(i.e arr[i])
+			// it means that their could not be any node in the entire sub tree, who's value is greter than current node. why ?
+			// why because, in out BST each node have only one child. so current node have either left child or right one.
+			// if next node(i+1 th) in preorder traversal is less than current node. It means that, next will be left child of 
+			// current node. so we can conclude that, no node in the left sub tree could exist having value greter than arr[i](current 
+			// value). 
+			// so we have to update MAX value.
+			// else we will update MIN value.
+			if(arr[i] > arr[i+1]){
+				MAX=arr[i];
+			}
+			else{
+				MIN=arr[i];
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
+	// last array value is not checked yet..
+	if(arr[i]<=MAX && arr[i]>=MIN){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+
+public static void main(String args[]){
+Temp t = new Temp();
+int arr[]={8, 3, 5, 7, 6};
+if(t.fun(arr)== true){
+	System.out.println("YES");
+}
+else{
+	System.out.println("NO");
+}
+
+}
+}
