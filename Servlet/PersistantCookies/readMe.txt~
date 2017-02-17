@@ -1,0 +1,57 @@
+This program is all about How some websites like facebook remembers you even after you closed browder ?
+
+Explanation of question  : when you create a session using request.getSession(), you get the session. to identify this client again we use a unique id named as JSESSIONID. we use either cookie of Url rewriting methods to pass this unique id to client. so that when client comes back again it will come with JSESSIONID. remember this JSESSIONID will go and comes in terms of HTTP request and respoonses. it DO NOT get stored at browser.
+
+
+Means, when the session object gets created at server side. it has a unique id (you can use session.getId() to check id). when you set attributes in that session, all those attributes are stored at serverside.  we DO NOT include this attributes in response. we just give that unique id(JESSSIONID) int the response. This is clear indication to the client(browser) that, "please include this id in the further requests also". Now this id will not get stored in browser. so when you close the browser, now the browser do not have that unique id given by server.
+
+The sesssion is still their for that client at serverside !!!
+
+so the problem is how to stay loged in for lets say 1 month ?
+
+Answer : Cookies :)
+
+cookies are stores at client side.
+
+what we do here is : 
+
+1) when session is created , we use a HashMap to store this session. 
+	HashMal<key,value> : key = unique id , value : HttpSesssion object. 
+
+2) create cookie and send it to client.
+	Cookie cookie = new Cookie("StoredUsers",session.getId());
+
+Thats it ------------------------------------------------
+
+so when the request comes , 
+
+HttpSession session = request.getSession(false) // do not create new session.
+
+if(session == null){
+ 	// try to check if the request has cookie with name "StoredUsers". if found, it means it is old user, so retrive it's session from HashMap
+	// if the request do not have cookie then , create a new session , and add it's id in Cookie and send it to client.
+}
+
+
+Remember the session is all about server side data storage , and Cookie is all about Client side data storage.
+
+
+How program works : 
+
+1)star server : 
+
+2)go to : localhost:8080/MyFirstWebExplore/
+
+3) give your name and lastname, click button.
+
+4) you can see your entered values and a unique id.
+
+5) now click on link. you will be shown this credential again. , now copy this URL http://localhost:8080/MyFirstWebExplore/SecondServlet  
+	you can copy from your browser also.
+
+6) close browser.
+
+7) repoen browser and paste link.
+
+cheers you got your session ..... 
+	
